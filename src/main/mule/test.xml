@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="09f78f49-4ddb-43b4-a5aa-dd5588e298e7" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="testFlow" doc:id="644704b2-f660-4259-baea-f4aa8625d85c" >
+		<http:listener doc:name="Listener" doc:id="7f38b062-bcd3-4301-8cd5-69d3ca60f5d0" config-ref="HTTP_Listener_config" path="ping"/>
+		<set-payload value="I am up and running" doc:name="Set Payload" doc:id="24cb92d3-6560-41fc-9b3d-17ad63f86e4a" />
+		<logger level="INFO" doc:name="Logger" doc:id="be7b7a3b-7741-4160-a22a-7d4a56a97eee" message="Request received to check application status"/>
+	</flow>
+</mule>
